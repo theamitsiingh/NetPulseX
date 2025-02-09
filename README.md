@@ -29,7 +29,7 @@ pip install psutil scapy
 
 ### **🔹 Clone the Repository**
 ```sh
-git clone https://github.com/yourusername/NetPulseX.git
+git clone https://github.com/theamitsiingh/NetPulseX.git
 cd NetPulseX
 ```
 
