@@ -55,13 +55,20 @@ python netpulsex.py
 - **Monitors process-specific network activity.**
 - **Supports remote monitoring** via SSH for multiple devices.
 
-**Example Output:**
-```
-Time       Status     TCP  UDP  ICMP  HTTPS  HTTP  External IP  ISP        Location
-12:30:45   UP        10   5    2     3      7     203.0.113.1  ISP Name   New York, USA
-12:30:50   UP        15   7    3     5      9     203.0.113.1  ISP Name   New York, USA
+### Run the Application
+```bash
+python setup.py
 ```
 
+## Usage
+- **Terminal Monitoring**: Displays live network statistics.
+- **Web Dashboard**: Open `http://127.0.0.1:5000` in your browser.
+- **Alerts**: Receive notifications if the network goes down.
+
+## Terminal Output
+When you start the script, it will display live network monitoring data in the terminal:
+
+```plaintext
 Starting network monitoring... Press Ctrl+C to stop.
 
 Time       Status    TCP   UDP   ICMP  HTTPS HTTP  External IP    
@@ -69,30 +76,37 @@ Time       Status    TCP   UDP   ICMP  HTTPS HTTP  External IP
 12:30:20   UP       15    5     4     7     12    192.168.1.1     
 12:30:25   DOWN     20    8     5     10    15    Unavailable     
 ```
+It updates every 5 seconds.
+When the network goes **DOWN**, an email and desktop notification are triggered.
 
-### CSV Log Output (`netpulsex_log.csv`)
-```
+## CSV Log Output (`netpulsex_log.csv`)
+The log file stores network data like this:
+
+```csv
 Time,Status,TCP,UDP,ICMP,HTTPS,HTTP,External IP
 12:30:15,UP,10,3,2,5,8,192.168.1.1
 12:30:20,UP,15,5,4,7,12,192.168.1.1
 12:30:25,DOWN,20,8,5,10,15,Unavailable
 ```
 
-### Web Dashboard (`http://127.0.0.1:5000`)
+## Web Dashboard Output (`http://127.0.0.1:5000`)
+The Flask dashboard will display real-time stats on traffic:
 - A **graph/chart** showing TCP, UDP, ICMP, HTTP, and HTTPS packet counts.
 - The **current network status** (UP/DOWN).
 - External IP address.
 
-### Alerts
-- **Email Alert**: 
-  ```
-  Subject: NetPulseX Alert
-  Message: Your network is down!
-  ```
-- **Desktop Notification**:
-  ```
-  NetPulseX Alert
-  Network Down! Check your connection.
+## Alerts (If Network Fails)
+### Email Alert:
+```plaintext
+Subject: NetPulseX Alert
+Message: Your network is down!
+```
+
+### Desktop Notification:
+```plaintext
+NetPulseX Alert
+Network Down! Check your connection.
+```
 
 ## 📜 License
 This project is licensed under the **MIT License**. Feel free to use and modify it.
